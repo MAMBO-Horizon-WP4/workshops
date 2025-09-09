@@ -2,6 +2,9 @@
 
 This repository holds workshop material that covers machine learning methods for analysing drone images in complement with other data sources.
 
+> [!WARNING]
+> These are early drafts based on previously existing material. The "live" versions currently in Google Colab have a lot of improvements. Please contact the maintainers or check back in November 2025.
+
 ## Contents 
 
 Current contents:
