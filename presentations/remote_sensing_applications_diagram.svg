@@ -1,0 +1,351 @@
+<svg viewBox="0 0 1400 1600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="700" y="30" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Remote Sensing ML Applications by Architecture</text>
+  
+  <!-- Classification Section -->
+  <g id="classification" transform="translate(50, 60)">
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4CAF50">1. Scene Classification</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" fill="#666">Architecture: CNN (ResNet, EfficientNet)</text>
+    
+    <!-- Input image -->
+    <rect x="0" y="60" width="120" height="80" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2"/>
+    <text x="60" y="95" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Satellite Scene</text>
+    <text x="60" y="110" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#666">256×256×3</text>
+    
+    <!-- Network representation -->
+    <g id="classification-network" transform="translate(140, 60)">
+      <!-- Input layer -->
+      <rect x="0" y="20" width="15" height="40" fill="#2196F3"/>
+      <text x="7.5" y="10" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Conv</text>
+      
+      <!-- Conv layers -->
+      <rect x="25" y="15" width="15" height="50" fill="#FF9800"/>
+      <text x="32.5" y="10" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Conv</text>
+      
+      <rect x="50" y="10" width="15" height="60" fill="#FF9800"/>
+      <text x="57.5" y="5" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Conv</text>
+      
+      <!-- Global pooling -->
+      <rect x="75" y="25" width="15" height="30" fill="#9C27B0"/>
+      <text x="82.5" y="20" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">Global</text>
+      <text x="82.5" y="15" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">Pool</text>
+      
+      <!-- Dense layer -->
+      <rect x="100" y="30" width="10" height="20" fill="#E91E63"/>
+      <text x="105" y="25" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">FC</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 260 100 L 290 100" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Output -->
+    <rect x="300" y="70" width="100" height="60" fill="#4CAF50" stroke="#333" stroke-width="2"/>
+    <text x="350" y="85" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="white">Classification</text>
+    <text x="350" y="100" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="white">Agricultural: 89%</text>
+    <text x="350" y="115" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="white">Urban: 8%</text>
+    <text x="350" y="125" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="white">Forest: 3%</text>
+    
+    <!-- Use cases -->
+    <text x="450" y="85" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Applications:</text>
+    <text x="450" y="100" font-family="Arial, sans-serif" font-size="10" fill="#666">• Land use mapping</text>
+    <text x="450" y="115" font-family="Arial, sans-serif" font-size="10" fill="#666">• Disaster assessment</text>
+    <text x="450" y="130" font-family="Arial, sans-serif" font-size="10" fill="#666">• Agricultural monitoring</text>
+  </g>
+
+  <!-- Segmentation Section -->
+  <g id="segmentation" transform="translate(50, 220)">
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2196F3">2. Semantic Segmentation</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" fill="#666">Architecture: U-Net, DeepLabV3+</text>
+    
+    <!-- Input image with varied regions -->
+    <rect x="0" y="60" width="120" height="80" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+    <!-- Simulate different land covers -->
+    <rect x="5" y="65" width="40" height="25" fill="#4CAF50" opacity="0.7"/> <!-- Forest -->
+    <rect x="50" y="65" width="30" height="35" fill="#2196F3" opacity="0.7"/> <!-- Water -->
+    <rect x="85" y="65" width="30" height="40" fill="#FF9800" opacity="0.7"/> <!-- Urban -->
+    <rect x="5" y="95" width="75" height="40" fill="#8BC34A" opacity="0.7"/> <!-- Agriculture -->
+    <text x="60" y="155" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Multi-class Scene</text>
+    
+    <!-- U-Net architecture -->
+    <g id="unet-network" transform="translate(140, 60)">
+      <!-- Encoder (contracting path) -->
+      <rect x="0" y="35" width="12" height="30" fill="#2196F3"/>
+      <rect x="15" y="30" width="12" height="40" fill="#2196F3"/>
+      <rect x="30" y="25" width="12" height="50" fill="#2196F3"/>
+      <rect x="45" y="20" width="12" height="60" fill="#2196F3"/>
+      
+      <!-- Bottleneck -->
+      <rect x="60" y="15" width="12" height="70" fill="#9C27B0"/>
+      
+      <!-- Decoder (expanding path) -->
+      <rect x="75" y="20" width="12" height="60" fill="#FF9800"/>
+      <rect x="90" y="25" width="12" height="50" fill="#FF9800"/>
+      <rect x="105" y="30" width="12" height="40" fill="#FF9800"/>
+      <rect x="120" y="35" width="12" height="30" fill="#FF9800"/>
+      
+      <!-- Skip connections -->
+      <path d="M 12 50 Q 66 35 120 50" stroke="#E91E63" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+      <path d="M 27 50 Q 66 40 105 50" stroke="#E91E63" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+      <path d="M 42 50 Q 66 45 90 50" stroke="#E91E63" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+      
+      <text x="66" y="10" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">U-Net</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 280 100 L 310 100" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Output segmentation mask -->
+    <rect x="320" y="60" width="120" height="80" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+    <!-- Colored segmentation -->
+    <rect x="325" y="65" width="40" height="25" fill="#4CAF50"/> <!-- Forest -->
+    <rect x="370" y="65" width="30" height="35" fill="#2196F3"/> <!-- Water -->
+    <rect x="405" y="65" width="30" height="40" fill="#FF9800"/> <!-- Urban -->
+    <rect x="325" y="95" width="75" height="40" fill="#8BC34A"/> <!-- Agriculture -->
+    <text x="380" y="155" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Pixel-level Labels</text>
+    
+    <!-- Use cases -->
+    <text x="460" y="85" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Applications:</text>
+    <text x="460" y="100" font-family="Arial, sans-serif" font-size="10" fill="#666">• Land cover mapping</text>
+    <text x="460" y="115" font-family="Arial, sans-serif" font-size="10" fill="#666">• Crop field delineation</text>
+    <text x="460" y="130" font-family="Arial, sans-serif" font-size="10" fill="#666">• Flood extent mapping</text>
+  </g>
+
+  <!-- Object Detection Section -->
+  <g id="object-detection" transform="translate(50, 400)">
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FF9800">3. Object Detection</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" fill="#666">Architecture: YOLO, Faster R-CNN</text>
+    
+    <!-- Input image with objects -->
+    <rect x="0" y="60" width="120" height="80" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+    <!-- Simulate objects (ships, buildings, etc) -->
+    <rect x="20" y="80" width="15" height="8" fill="#795548"/> <!-- Ship -->
+    <rect x="70" y="75" width="20" height="15" fill="#607D8B"/> <!-- Building -->
+    <rect x="45" y="110" width="12" height="6" fill="#795548"/> <!-- Ship -->
+    <circle cx="90" cy="120" r="5" fill="#4CAF50"/> <!-- Circular object -->
+    <text x="60" y="155" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Scene with Objects</text>
+    
+    <!-- YOLO/Detection network -->
+    <g id="detection-network" transform="translate(140, 60)">
+      <!-- Backbone -->
+      <rect x="0" y="25" width="15" height="50" fill="#FF9800"/>
+      <rect x="20" y="20" width="15" height="60" fill="#FF9800"/>
+      <rect x="40" y="15" width="15" height="70" fill="#FF9800"/>
+      
+      <!-- Detection head -->
+      <rect x="65" y="30" width="15" height="40" fill="#E91E63"/>
+      <rect x="85" y="35" width="15" height="30" fill="#E91E63"/>
+      
+      <text x="50" y="10" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">YOLO/R-CNN</text>
+      <text x="77" y="95" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">Detection Head</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 250 100 L 280 100" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Output with bounding boxes -->
+    <rect x="290" y="60" width="120" height="80" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+    <!-- Bounding boxes -->
+    <rect x="310" y="80" width="15" height="8" fill="none" stroke="#E91E63" stroke-width="2"/>
+    <text x="317" y="95" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#E91E63">Ship 95%</text>
+    
+    <rect x="360" y="75" width="20" height="15" fill="none" stroke="#E91E63" stroke-width="2"/>
+    <text x="370" y="100" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#E91E63">Building 87%</text>
+    
+    <rect x="335" y="110" width="12" height="6" fill="none" stroke="#E91E63" stroke-width="2"/>
+    <text x="341" y="125" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#E91E63">Ship 92%</text>
+    
+    <text x="350" y="155" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Objects + Locations</text>
+    
+    <!-- Use cases -->
+    <text x="430" y="85" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Applications:</text>
+    <text x="430" y="100" font-family="Arial, sans-serif" font-size="10" fill="#666">• Ship detection in SAR</text>
+    <text x="430" y="115" font-family="Arial, sans-serif" font-size="10" fill="#666">• Aircraft monitoring</text>
+    <text x="430" y="130" font-family="Arial, sans-serif" font-size="10" fill="#666">• Vehicle counting</text>
+  </g>
+
+  <!-- Change Detection Section -->
+  <g id="change-detection" transform="translate(50, 580)">
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#9C27B0">4. Change Detection</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" fill="#666">Architecture: Siamese Networks, 3D CNNs</text>
+    
+    <!-- Time 1 image -->
+    <rect x="0" y="60" width="80" height="60" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+    <rect x="10" y="70" width="60" height="25" fill="#4CAF50" opacity="0.8"/> <!-- Forest -->
+    <rect x="10" y="100" width="60" height="15" fill="#8BC34A" opacity="0.8"/> <!-- Grass -->
+    <text x="40" y="135" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Time 1 (2020)</text>
+    
+    <!-- Time 2 image -->
+    <rect x="100" y="60" width="80" height="60" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+    <rect x="110" y="70" width="30" height="25" fill="#4CAF50" opacity="0.8"/> <!-- Remaining forest -->
+    <rect x="145" y="70" width="25" height="25" fill="#FF9800" opacity="0.8"/> <!-- Urban development -->
+    <rect x="110" y="100" width="60" height="15" fill="#8BC34A" opacity="0.8"/> <!-- Grass -->
+    <text x="140" y="135" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Time 2 (2023)</text>
+    
+    <!-- Siamese network -->
+    <g id="siamese-network" transform="translate(200, 60)">
+      <!-- Branch 1 -->
+      <g id="branch1">
+        <rect x="0" y="10" width="10" height="20" fill="#9C27B0"/>
+        <rect x="15" y="8" width="10" height="24" fill="#9C27B0"/>
+        <rect x="30" y="6" width="10" height="28" fill="#9C27B0"/>
+        <text x="20" y="5" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">CNN Branch 1</text>
+      </g>
+      
+      <!-- Branch 2 -->
+      <g id="branch2" transform="translate(0, 30)">
+        <rect x="0" y="10" width="10" height="20" fill="#9C27B0"/>
+        <rect x="15" y="8" width="10" height="24" fill="#9C27B0"/>
+        <rect x="30" y="6" width="10" height="28" fill="#9C27B0"/>
+        <text x="20" y="5" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">CNN Branch 2</text>
+      </g>
+      
+      <!-- Fusion -->
+      <rect x="50" y="20" width="15" height="20" fill="#E91E63"/>
+      <text x="57.5" y="15" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">Fusion</text>
+      
+      <!-- Lines connecting branches to fusion -->
+      <line x1="40" y1="20" x2="50" y2="25" stroke="#333" stroke-width="1"/>
+      <line x1="40" y1="45" x2="50" y2="35" stroke="#333" stroke-width="1"/>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 275 90 L 305 90" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Change map output -->
+    <rect x="315" y="60" width="80" height="60" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+    <!-- Change areas highlighted -->
+    <rect x="325" y="70" width="30" height="25" fill="#9E9E9E" opacity="0.5"/> <!-- No change -->
+    <rect x="360" y="70" width="25" height="25" fill="#F44336" opacity="0.8"/> <!-- Change detected -->
+    <rect x="325" y="100" width="60" height="15" fill="#9E9E9E" opacity="0.5"/> <!-- No change -->
+    <text x="355" y="135" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Change Map</text>
+    
+    <!-- Use cases -->
+    <text x="415" y="75" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Applications:</text>
+    <text x="415" y="90" font-family="Arial, sans-serif" font-size="10" fill="#666">• Deforestation monitoring</text>
+    <text x="415" y="105" font-family="Arial, sans-serif" font-size="10" fill="#666">• Urban growth tracking</text>
+    <text x="415" y="120" font-family="Arial, sans-serif" font-size="10" fill="#666">• Disaster impact assessment</text>
+  </g>
+
+  <!-- Time Series Analysis Section -->
+  <g id="time-series" transform="translate(50, 760)">
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#795548">5. Time Series Analysis</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" fill="#666">Architecture: LSTM, 3D CNN, Transformers</text>
+    
+    <!-- Time series input -->
+    <g id="time-series-input">
+      <rect x="0" y="60" width="40" height="30" fill="#EFEBE9" stroke="#795548" stroke-width="1"/>
+      <text x="20" y="80" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Jan</text>
+      
+      <rect x="45" y="60" width="40" height="30" fill="#D7CCC8" stroke="#795548" stroke-width="1"/>
+      <text x="65" y="80" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Apr</text>
+      
+      <rect x="90" y="60" width="40" height="30" fill="#BCAAA4" stroke="#795548" stroke-width="1"/>
+      <text x="110" y="80" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Jul</text>
+      
+      <rect x="135" y="60" width="40" height="30" fill="#A1887F" stroke="#795548" stroke-width="1"/>
+      <text x="155" y="80" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Oct</text>
+      
+      <text x="87.5" y="110" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333">Temporal Sequence</text>
+    </g>
+    
+    <!-- LSTM/Temporal network -->
+    <g id="lstm-network" transform="translate(190, 60)">
+      <!-- LSTM cells -->
+      <ellipse cx="15" cy="20" rx="12" ry="8" fill="#795548"/>
+      <text x="15" y="24" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="white">LSTM</text>
+      
+      <ellipse cx="40" cy="20" rx="12" ry="8" fill="#795548"/>
+      <text x="40" y="24" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="white">LSTM</text>
+      
+      <ellipse cx="65" cy="20" rx="12" ry="8" fill="#795548"/>
+      <text x="65" y="24" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="white">LSTM</text>
+      
+      <ellipse cx="90" cy="20" rx="12" ry="8" fill="#795548"/>
+      <text x="90" y="24" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="white">LSTM</text>
+      
+      <!-- Connections -->
+      <path d="M 27 20 L 28 20" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+      <path d="M 52 20 L 53 20" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+      <path d="M 77 20 L 78 20" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+      
+      <text x="52" y="10" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">Recurrent Network</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 300 75 L 330 75" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Prediction output -->
+    <rect x="340" y="60" width="100" height="30" fill="#795548" stroke="#333" stroke-width="2"/>
+    <text x="390" y="80" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="white">Crop Yield: 4.2 t/ha</text>
+    
+    <!-- NDVI time series graph -->
+    <g id="ndvi-graph" transform="translate(340, 100)">
+      <rect x="0" y="0" width="100" height="40" fill="none" stroke="#333" stroke-width="1"/>
+      <polyline points="5,35 25,25 45,15 65,20 85,30 95,35" 
+                fill="none" stroke="#4CAF50" stroke-width="2"/>
+      <text x="50" y="-5" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333">NDVI Time Series</text>
+      <text x="0" y="55" font-family="Arial, sans-serif" font-size="7" fill="#666">Jan</text>
+      <text x="90" y="55" font-family="Arial, sans-serif" font-size="7" fill="#666">Dec</text>
+    </g>
+    
+    <!-- Use cases -->
+    <text x="460" y="75" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333">Applications:</text>
+    <text x="460" y="90" font-family="Arial, sans-serif" font-size="10" fill="#666">• Crop yield prediction</text>
+    <text x="460" y="105" font-family="Arial, sans-serif" font-size="10" fill="#666">• Phenology monitoring</text>
+    <text x="460" y="120" font-family="Arial, sans-serif" font-size="10" fill="#666">• Climate trend analysis</text>
+  </g>
+
+  <!-- Multi-modal Fusion Section -->
+  <g id="multi-modal" transform="translate(50, 960)">
+    <text x="0" y="20" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#607D8B">6. Multi-modal Data Fusion</text>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" fill="#666">Architecture: Multi-branch CNNs, Attention Mechanisms</text>
+    
+    <!-- Different data sources -->
+    <g id="data-sources">
+      <!-- Optical -->
+      <rect x="0" y="60" width="60" height="40" fill="#E8F5E8" stroke="#4CAF50" stroke-width="2"/>
+      <text x="30" y="78" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">Optical</text>
+      <text x="30" y="90" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666">RGB + NIR</text>
+      
+      <!-- SAR -->
+      <rect x="70" y="60" width="60" height="40" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+      <text x="100" y="78" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">SAR</text>
+      <text x="100" y="90" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666">C-band</text>
+      
+      <!-- LiDAR -->
+      <rect x="140" y="60" width="60" height="40" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+      <text x="170" y="78" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">LiDAR</text>
+      <text x="170" y="90" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666">Elevation</text>
+    </g>
+    
+    <!-- Multi-branch network -->
+    <g id="multi-branch-network" transform="translate(220, 60)">
+      <!-- Branch for each modality -->
+      <g id="optical-branch">
+        <rect x="0" y="0" width="8" height="15" fill="#4CAF50"/>
+        <rect x="10" y="0" width="8" height="15" fill="#4CAF50"/>
+        <text x="9" y="-3" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#333">Optical</text>
+      </g>
+      
+      <g id="sar-branch" transform="translate(0, 20)">
+        <rect x="0" y="0" width="8" height="15" fill="#2196F3"/>
+        <rect x="10" y="0" width="8" height="15" fill="#2196F3"/>
+        <text x="9" y="-3" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#333">SAR</text>
+      </g>
+      
+      <g id="lidar-branch" transform="translate(0, 40)">
+        <rect x="0" y="0" width="8" height="15" fill="#FF9800"/>
+        <rect x="10" y="0" width="8" height="15" fill="#FF9800"/>
+        <text x="9" y="-3" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#333">LiDAR</text>
+      </g>
+      
+      <!-- Fusion layer -->
+      <rect x="25" y="15" width="15" height="25" fill="#9C27B0"/>
+      <text x="32.5" y="10" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">Attention</text>
+      <text x="32.5" y="52" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#333">Fusion</text>
+      
+      <!-- Connection lines -->
+      <line x1="18" y1="7" x2="25" y2="20" stroke="#333" stroke-width="1"/>
+      <line x1="18" y1="27" x2="25" y2="27" stroke="#333" stroke-width="1"/>
+      <line x1="18" y1="47" x2="25" y2="35" stroke="#333" stroke-width="1"/>
+    </g
