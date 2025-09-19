@@ -1,0 +1,64 @@
+# currently a quarto project is required for metadata or brand extensions to work
+project:
+  type: default
+  output-dir: _output
+
+format:
+
+  html:
+    format-links: false
+    toc: true
+    toc-title: |
+      [{{< brand logo medium light >}}]{.light-content}[{{< brand logo medium dark >}}]{.dark-content}
+    toc-location: left
+    output-file: index
+
+  typst:
+    brand-mode: light
+    logo: logo-light
+    papersize: a4
+    output-file: typst
+
+  typst-dark:
+    brand-mode: dark
+    logo: logo-dark
+    papersize: a4
+    output-file: typst-dark
+
+  revealjs:
+    brand-mode: light
+    logo: logo-light
+    progress: true
+    show-slide-number: all
+    slide-number: c/t
+    smaller: true
+    output-file: revealjs
+
+  revealjs-dark:
+    brand-mode: dark
+    logo: logo-dark
+    progress: true
+    show-slide-number: all
+    slide-number: c/t
+    smaller: true
+    output-file: revealjs-dark
+
+# Options applied to all applicable formats 
+embed-resources: true  # html, revealjs
+link-external-newwindow: true  # html, revealjs
+
+format-links:
+  - html
+  - format: typst
+    text: Typst
+    icon: file-pdf
+  - format: typst-dark
+    text: Typst (dark)
+    icon: file-pdf-fill
+  - format: revealjs
+    text: Reveal.js
+    icon: file-slides
+  - format: revealjs-dark
+    text: Reveal.js (dark)
+    icon: file-slides-fill
+

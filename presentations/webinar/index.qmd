@@ -1,0 +1,28 @@
+---
+title: MAMBO WP4 Deep Learning 
+author:
+  name: Jo Walsh
+  affiliation: UK Centre for Ecology & Hydrology
+  email: jowals@ceh.ac.uk
+  orcid: 0000-0002-8082-8566
+date: last-modified
+date-format: long
+abstract: |
+    A 15 minute presentation on deep learning for remote sensing and its use in the WP4 of the MAMBO project, identifying shrubs from drone imagery
+---
+
+## Deep Learning (15 minutes)
+
+## Demystifying deep learning 
+
+## Explaining the concept and power of U-nets 
+
+## Training starts with data 
+
+## Testing and validating is important 
+
+## How code-savvy do I need to be? 
+
+## Access to software and hardware  
+
+## References
