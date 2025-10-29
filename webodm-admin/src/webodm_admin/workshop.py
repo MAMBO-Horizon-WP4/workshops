@@ -28,7 +28,7 @@ def login(obj, username, password):
 @click.argument("number", type=int, required=True)
 @click.option("--prefix", type=str, default="workshop")
 @click.option("--password", type=str)
-def user(obj, number, prefix, password):
+def users(obj, number, prefix, password):
     """Create a set of new users, optionally with the given base password"""
 
     if not password:
@@ -39,10 +39,24 @@ def user(obj, number, prefix, password):
             return
     for i in range(1, number + 1):
         username = f"{prefix}{i}"
+        print(username)
         password = f"{password}{i}"
-        obj["api"].create_user(username, password)
-
+        response = obj["api"].create_user(username, password)
+        print(response)
     click.echo(f"added {number} new users")
 
 
+@webodm.command("getuser")
+@click.pass_obj
+@click.argument("userid", type=int, required=True)
+def getuser(obj, userid):
+    """Create a set of new users, optionally with the given base password"""
+
+    response = obj["api"].get_user(userid)
+
+    click.echo(response)
+
+
 webodm.add_command(login)
+webodm.add_command(users)
+webodm.add_command(getuser)
