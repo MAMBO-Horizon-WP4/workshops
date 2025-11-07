@@ -8,7 +8,7 @@ class WebODMAPI:
     # * manually editing one user to add the permissions I'd like
     # * learning that user's numeric ID by looking at the URL in the admin UI
     # * making an API query for that user ID (see get_user method) to read the list
-    permission_groups = [33, 34, 35, 36, 37, 38, 39, 40, 49, 50, 51, 52, 73, 74, 75, 76]
+    permission_groups = [33, 34, 35, 36, 37, 38, 39, 40, 49, 50, 51, 52, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]
 
     def __init__(self, baseurl: str = "http://localhost:8000"):
         self.baseurl = baseurl
