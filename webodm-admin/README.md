@@ -8,6 +8,10 @@ We are running a workshop / tutorial session which includes a day on getting sta
 
 `.env` contains the base URL of the WebODM installation
 
+```
+BASEURL=http://my.webodm.example.com
+```
+
 ## Command-line WebODM admin
 
 Log in, this will save an access token that will last for 6 hours:

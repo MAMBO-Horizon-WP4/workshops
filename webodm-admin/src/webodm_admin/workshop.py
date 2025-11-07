@@ -19,6 +19,8 @@ def webodm(ctx):
 @click.argument("username", type=str, required=True)
 @click.password_option()
 def login(obj, username, password):
+    if not hasattr(obj['api'], 'baseurl') or obj['api'].baseurl is None:
+        click.echo("Please set BASEURL of your webODM in environment")
     _ = obj["api"].auth_token(username, password)
     click.echo(f"logged in as {username}")
 
@@ -29,7 +31,7 @@ def login(obj, username, password):
 @click.option("--prefix", type=str, default="workshop")
 @click.option("--password", type=str)
 def users(obj, number, prefix, password):
-    """Create a set of new users, optionally with the given base password"""
+    """Create a set of new users, option of prefix and password"""
 
     if not password:
         if os.environ.get("BASEPWD"):
@@ -40,9 +42,9 @@ def users(obj, number, prefix, password):
     for i in range(1, number + 1):
         username = f"{prefix}{i}"
         print(username)
-        password = f"{password}{i}"
-        response = obj["api"].create_user(username, password)
-        print(response)
+        user_password = f"{password}{i}"
+
+        response = obj["api"].create_user(username, user_password)
     click.echo(f"added {number} new users")
 
 
@@ -50,7 +52,7 @@ def users(obj, number, prefix, password):
 @click.pass_obj
 @click.argument("userid", type=int, required=True)
 def getuser(obj, userid):
-    """Create a set of new users, optionally with the given base password"""
+    """Get info for a userid (numeric)"""
 
     response = obj["api"].get_user(userid)
 
